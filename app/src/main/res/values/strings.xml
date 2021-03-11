@@ -6,5 +6,8 @@
     <string name="password">Contraseña</string>
     <string name="repeatpassword">Repetir Contraseña</string>
     <string name="save">Guardar</string>
-    <string name="info">Informacion del Usuario</string>
+    <string name="info">Información del Usuario</string>
+    <string name="error">Las contraseñas no coinciden</string>
+    <string name="empty">"Digite un Correo, No sea Estúpido"</string>
+
 </resources>
