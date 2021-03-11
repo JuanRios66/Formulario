@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Formulario</string>
+    <string name="title">Formulario</string>
+    <string name="error_field">*Campo Obligatorio</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="repeatpassword">Repetir Contraseña</string>
+    <string name="save">Guardar</string>
+    <string name="info">Informacion del Usuario</string>
+</resources>
