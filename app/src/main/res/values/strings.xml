@@ -8,6 +8,14 @@
     <string name="save">Guardar</string>
     <string name="info">Información del Usuario</string>
     <string name="error">Las contraseñas no coinciden</string>
-    <string name="empty">"Digite un Correo, No sea Estúpido"</string>
+    <string name="empty">Debes digitar un Correo Electrónico</string>
+    <string name="genre">Género</string>
+    <string name="female">Femenino</string>
+    <string name="male">Masculino</string>
+    <string name="hobbies">Pasatiempos</string>
+    <string name="Sport">Deporte</string>
+    <string name="Read">Leer</string>
+    <string name="Eat">Comer</string>
+    <string name="Dance">Bailar</string>
 
 </resources>
