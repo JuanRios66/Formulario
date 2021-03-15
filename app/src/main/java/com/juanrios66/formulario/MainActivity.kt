@@ -10,6 +10,7 @@ private const val SPACE = " "
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding: ActivityMainBinding
+    private var users: MutableList<user> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +37,36 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, getString(R.string.empty), Toast.LENGTH_LONG).show()
             }
+            clearViews()
         }
 
     }
 
+    private fun clearViews() {
+        with(mainBinding){
+            emailText.setText(EMPTY)
+            passText.setText(EMPTY)
+            repeatPassText.setText(EMPTY)
+            femaleRadiobutt.isChecked = true
+            dancecheckBox.isChecked = false
+            SportcheckBox.isChecked = false
+            eatcheckBox.isChecked = false
+            readcheckBox.isChecked = false
+        }
+    }
+
     private fun saveUser(email: String, password: String, genre: String, hobbies: String) {
         val newUser = user(email, password, genre, hobbies)
-        mainBinding.textView2.text = newUser.email + "\n" + newUser.genre + "\n" + newUser.hobbies
+        users.add(newUser)
+        printUserData()
+
+    }
+
+    private fun printUserData() {
+        var info =""
+        for (user in users){
+            info = info + "\n\n" + user.email + "\n" + user.genre + "\n" + user.hobbies
+        }
+        mainBinding.textView2.text = info
     }
 }
