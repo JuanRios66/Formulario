@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             hobbies = hobbies + SPACE + if(mainBinding.SportcheckBox.isChecked) getString(R.string.Sport) else EMPTY
             hobbies = hobbies + SPACE + if(mainBinding.readcheckBox.isChecked) getString(R.string.Read) else EMPTY
 
-            if (email.isNotEmpty()) {
+            if (email.isNotEmpty() and password.isNotEmpty()) {
                 if (password == repeatpass) {
                     saveUser(email, password, genre, hobbies)
                     mainBinding.repeatPass.error = null
