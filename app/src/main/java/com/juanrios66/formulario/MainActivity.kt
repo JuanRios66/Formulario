@@ -1,12 +1,21 @@
 package com.juanrios66.formulario
 
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.os.Bundle
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import com.juanrios66.formulario.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val EMPTY = ""
 private const val SPACE = " "
+
+
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding: ActivityMainBinding
@@ -16,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
 
         mainBinding.saveButton.setOnClickListener {
             val email = mainBinding.emailText.text.toString()
@@ -40,6 +50,26 @@ class MainActivity : AppCompatActivity() {
             clearViews()
         }
 
+        class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+            override fun onCreateDialog(savedInstanceState: Bundle?): Dialog{
+                val c = Calendar.getInstance()
+                val year = c.get(Calendar.YEAR)
+                val month = c.get(Calendar.MONTH)
+                val day = c.get(Calendar.DAY_OF_MONTH)
+                return DatePickerDialog(activity!!, this, year, month, day)
+            }
+
+            override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
+                val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+                val date = ("$day-$month-$year")
+                mainBinding.dateBirth.setText(date)
+            }
+        }
+
+        mainBinding.dateBirth.setOnClickListener{
+            val newFragment = DatePickerFragment()
+            newFragment.show(supportFragmentManager, "datePicker")
+        }
     }
 
     private fun clearViews() {
@@ -63,10 +93,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun printUserData() {
-        var info =""
+        var info = ""
         for (user in users){
             info = info + "\n\n" + user.email + "\n" + user.genre + "\n" + user.hobbies
         }
         mainBinding.textView2.text = info
     }
+
 }
