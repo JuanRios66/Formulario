@@ -58,13 +58,14 @@ class MainActivity : AppCompatActivity() {
                 if (password == repeatpass) {
                     saveUser(name, email, password, genre, hobbies, fecha)
                     mainBinding.repeatPass.error = null
+                    clearViews()
                 } else {
                     mainBinding.repeatPass.error = getString(R.string.error)
                 }
             } else {
                 Toast.makeText(this, getString(R.string.empty), Toast.LENGTH_LONG).show()
             }
-            clearViews()
+
         }
     }
 
