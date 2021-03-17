@@ -6,5 +6,6 @@ data class user (
         var password: String? = null,
         var genre: String? = null,
         var hobbies: String? = null,
-        var fecha: String? = null
+        var fecha: String? = null,
+        var ciudad: String? = null
         )

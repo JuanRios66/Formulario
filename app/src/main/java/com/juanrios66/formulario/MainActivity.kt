@@ -8,10 +8,6 @@ import com.juanrios66.formulario.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val EMPTY = ""
-private const val SPACE = " "
-
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding: ActivityMainBinding
@@ -43,29 +39,34 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
 
+        mainBinding.repeatPassText.setOnClickListener {
+            mainBinding.repeatPass.error = null
+        }
+
         mainBinding.saveButton.setOnClickListener {
             val name = mainBinding.nameText.text.toString()
             val email = mainBinding.emailText.text.toString()
             val password = mainBinding.passText.text.toString()
             val repeatpass = mainBinding.repeatPassText.text.toString()
+            val ciudad = mainBinding.placeSpinner.selectedItem.toString()
             val genre = if (mainBinding.femaleRadiobutt.isChecked) getString(R.string.female) else getString(R.string.male)
-            var hobbies = if (mainBinding.dancecheckBox.isChecked) getString(R.string.Dance) else EMPTY
-            hobbies = hobbies + SPACE + if (mainBinding.eatcheckBox.isChecked) getString(R.string.Eat) else EMPTY
-            hobbies = hobbies + SPACE + if (mainBinding.SportcheckBox.isChecked) getString(R.string.Sport) else EMPTY
-            hobbies = hobbies + SPACE + if (mainBinding.readcheckBox.isChecked) getString(R.string.Read) else EMPTY
+            var hobbies = if (mainBinding.dancecheckBox.isChecked) getString(R.string.Dance) + SPACE else EMPTY
+            hobbies += if (mainBinding.eatcheckBox.isChecked) getString(R.string.Eat) + SPACE else EMPTY
+            hobbies += if (mainBinding.SportcheckBox.isChecked) getString(R.string.Sport) + SPACE else EMPTY
+            hobbies += if (mainBinding.readcheckBox.isChecked) getString(R.string.Read) else EMPTY
 
             if (name.isNotEmpty() and email.isNotEmpty() and password.isNotEmpty() and fecha.isNotEmpty()) {
                 if (password == repeatpass) {
-                    saveUser(name, email, password, genre, hobbies, fecha)
+                    saveUser(name, email, password, genre, hobbies, fecha, ciudad)
                     mainBinding.repeatPass.error = null
                     clearViews()
                 } else {
                     mainBinding.repeatPass.error = getString(R.string.error)
+                    mainBinding.repeatPassText.setText(EMPTY)
                 }
             } else {
                 Toast.makeText(this, getString(R.string.empty), Toast.LENGTH_LONG).show()
             }
-
         }
     }
 
@@ -84,8 +85,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUser(name: String, email: String, password: String, genre: String, hobbies: String, fecha:String) {
-        val newUser = user(name, email, password, genre, hobbies, fecha)
+    private fun saveUser(name: String, email: String, password: String, genre: String, hobbies: String, fecha:String, ciudad:String) {
+        val newUser = user(name, email, password, genre, hobbies, fecha, ciudad)
         users.add(newUser)
         printUserData()
 
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
     private fun printUserData() {
         var info = ""
         for (user in users) {
-            info = info + "\n\n" + user.name+"\n" + user.email + "\n"+user.fecha +"\n" + user.genre + "\n" + user.hobbies
+            info = info + "\n\n" + user.name+"\n" + user.email + "\n"+user.fecha +"\n" + user.genre + "\n" + user.hobbies + "\n" + user.ciudad
         }
         mainBinding.textView2.text = info
     }
