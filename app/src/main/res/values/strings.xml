@@ -18,5 +18,6 @@
     <string name="Eat">Comer</string>
     <string name="Dance">Bailar</string>
     <string name="Datebirth">Fecha de Nacimiento</string>
+    <string name="name">Nombre Completo</string>
 
 </resources>

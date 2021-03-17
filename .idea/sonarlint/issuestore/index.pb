@@ -19,3 +19,5 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 c
 3app/src/main/java/com/juanrios66/formulario/user.kt,f\9\f9bfb1309ba8390e49d501a7a33b9c537cdc58d7
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
