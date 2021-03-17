@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             hobbies = hobbies + SPACE + if (mainBinding.SportcheckBox.isChecked) getString(R.string.Sport) else EMPTY
             hobbies = hobbies + SPACE + if (mainBinding.readcheckBox.isChecked) getString(R.string.Read) else EMPTY
 
-            if (email.isNotEmpty() and password.isNotEmpty()) {
+            if (name.isNotEmpty() and email.isNotEmpty() and password.isNotEmpty()) {
                 if (password == repeatpass) {
                     saveUser(name, email, password, genre, hobbies, fecha)
                     mainBinding.repeatPass.error = null
@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun clearViews() {
         with(mainBinding) {
+            nameText.setText(EMPTY)
             emailText.setText(EMPTY)
             passText.setText(EMPTY)
             repeatPassText.setText(EMPTY)
