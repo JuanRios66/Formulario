@@ -8,7 +8,7 @@
     <string name="save">Guardar</string>
     <string name="info">Información del Usuario</string>
     <string name="error">Las contraseñas no coinciden</string>
-    <string name="empty">Verifica Correo Electrónico y Contraseña</string>
+    <string name="empty">Introduce todos los Campos</string>
     <string name="genre">Género</string>
     <string name="female">Femenino</string>
     <string name="male">Masculino</string>
